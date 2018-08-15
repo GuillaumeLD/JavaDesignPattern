@@ -6,15 +6,25 @@ public class Main {
 
     	MealBuilder mealBuilder = new MealBuilder();
     	
-    	Meal vegMeal = mealBuilder.prepareVegMeal();
+    	Meal vegMeal = mealBuilder.reset().prepareVegMeal().build();
     	System.out.println("Veg Meal : ");
-    	vegMeal.showItems();
-    	System.out.println("Price : " + vegMeal.getPrice());
+    	vegMeal.show();
     	
-    	Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
+    	Meal nonVegMeal = mealBuilder.reset().prepareNonVegMeal().build();
     	System.out.println("Non Veg Meal : ");
-    	nonVegMeal.showItems();
-    	System.out.println("Price : " + nonVegMeal.getPrice());
+    	nonVegMeal.show();
+    	
+    	Meal infiniteMeal = mealBuilder.reset().add(new Coke())
+    									.add(new VegBurger())
+    									.add(new VegBurger())
+    									.add(new Gift())
+    									.build();
+    	 System.out.println("Infinite Meal : ");
+    	 infiniteMeal.show();
+    	 
+    	 Meal repeatMeal = mealBuilder.reset().add(new ChickenBurger(), 3).build();
+    	 System.out.println("Repeat Meal : ");
+    	 repeatMeal.show();
     	 
     }
 

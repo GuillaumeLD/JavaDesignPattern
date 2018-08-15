@@ -3,31 +3,33 @@ import java.util.*;
 
 public class Meal {
 
-	public ArrayList<Item> listeItems;
+	public ArrayList<Item> listeItems = new ArrayList<Item>();
 
-	public Meal() {
-	}
+	// Affiche les items d'un repas
+	public void show() {
 
-	public void showItems() {
-		
 		for (Item item : listeItems) {
-			System.out.println("Nom : " + item.getName() + ", Prix : " + item.getPrice()
-			+ ", Packaging = " + item.getPackaging().getName());
+			System.out.println(
+					"Nom : " + item.getName() + ", Prix : " + item.getPrice() + ", Packaging = " + item.getPackaging().getName() );
 		}
+		System.out.println("Price : " + getPrice() + "\n");
 	}
 
-    public void addItem(Item item)
-	{
+	// Ajoute un item à un repas
+	public Meal addItem(Item item) {
 		listeItems.add(item);
+		return this;
 	}
 
+	// Renvoie le prix d'un repas
 	public float getPrice() {
-		
+
 		float price = 0.0f;
 		for (Item item : listeItems) {
 			price += item.getPrice();
 		}
-		return price;
+		float roundPrice = (float) (((int) (price * 100)) / 100.0);
+		return roundPrice;
 	}
 
 }
